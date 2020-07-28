@@ -1,0 +1,48 @@
+<%= search_form_for @search do |h| %>
+  <!-- _cont部分一致, _eq等しい, _not_eq等しくない -->
+  <%= h.label :title_cont, "病院名" %>
+  <%= h.search_field :title_cont %>
+  <%= h.submit "検索" %>
+<% end %>
+
+<table>
+  <tr>
+    <th>画像</th>
+    <th>病院名</th>
+    <th>診療科目</th>
+    <th>特徴、強み</th>
+    <th></th>
+    <th>いいねの数</th>
+  </tr>
+
+  <% if @results.any? %>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= attachment_image_tag result, :hospital_image, fallback: "no_image.jpg",　format: 'jpeg', size:'100x100' %></td>
+        <td><%= result.title %></td>
+        <td><%= result.department %></td>
+        <td><%= result.body %></td>
+        <td><%= link_to "詳細", hospital_path(result) %></td>
+          <!-- いいね機能↓ -->
+          <!-- ユーザーがログイン済かを判定 && ログインユーザーがいいねをしていたらif -->
+          <% if user_signed_in? && current_user.already_favorited?(result) %>
+            <td>
+              <%= link_to hospital_favorites_path(result), method: :delete do %>
+                <i class="fas fa-heart"></i>
+              <% end %>
+            </td>
+          <% elsif user_signed_in? %>
+            <td>
+              <%= link_to hospital_favorites_path(result), method: :post do %>
+                <i class="far fa-heart"></i>
+              <% end %>
+            </td>
+          <% end %>
+          <td><%= result.favorites.count %></td>
+          <!-- いいね機能↑ -->
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<%= paginate @results %>

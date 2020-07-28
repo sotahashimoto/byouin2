@@ -1,0 +1,20 @@
+<%= @user.name %>
+
+<%= link_to "ユーザー編集", edit_user_registration_path %>
+
+<p>プロフィール画像編集</p>
+<%= form_for(@user) do |user| %>
+  <%= user.attachment_field :user_image %>
+  <%= user.submit '保存' %>
+<% end %>
+
+<table>
+  <tr>
+    <th>いいねした病院一覧</th>
+  </tr>
+  <% @favorites.each do |hospital| %>
+    <tr>
+      <td><%= link_to hospital.title, hospital_path(hospital) %></td>
+    </tr>
+  <% end %>
+</table>

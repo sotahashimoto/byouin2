@@ -1,0 +1,13 @@
+<table>
+  <tr>
+  	<th>画像</th>
+    <th>ユーザー名</th>
+  </tr>
+
+  <% @users.each do |user| %>
+  <tr>
+  	<td><%= attachment_image_tag user, :user_image, fallback: "no_image.jpg",　format: 'jpeg', size:'100x100' %></td>
+    <td><%= user.name %></td>
+  </tr>
+  <% end %>
+</table>

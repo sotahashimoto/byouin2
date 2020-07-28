@@ -1,0 +1,42 @@
+<h1>詳細</h1>
+
+<p>病院名</p>
+<%= @hospital.title %>
+<p>診療科目</p>
+<%= @hospital.department %>
+<p>特徴、強み</p>
+<%= @hospital.body %>
+<!-- いいね機能↓ -->
+<p>いいね</p>
+<% if user_signed_in? && current_user.already_favorited?(@hospital) %>
+  <%= link_to hospital_favorites_path(@hospital), method: :delete do %>
+    <i class="fas fa-heart"></i>
+  <% end %>
+<% elsif user_signed_in? %>
+  <%= link_to hospital_favorites_path(@hospital), method: :post do %>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% end %>
+<%= @hospital.favorites.count %>
+<!-- いいね機能↑ -->
+
+<table>
+  <tr>
+    <th>コメント</th>
+    <th>投稿者</th>
+    <th>投稿者image</th>
+  </tr>
+  <% @comments.each do |c| %>
+  <tr>
+    <td><%= c.comment %></td>
+    <td><%= c.user.name %></td>
+    <td><%= attachment_image_tag c.user, :user_image, fallback: "no_image.jpg",　format: 'jpeg', size:'100x100' %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= flash[:success] %>
+<%= form_for [@hospital, @comment] do |f| %>
+  <%= f.text_area :comment ,placeholder: "病院に関するコメントはこちらに" %>
+  <%= f.submit "送信する" %>
+<% end %>

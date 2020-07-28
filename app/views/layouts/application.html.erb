@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Byouin</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/8f8aa2dd98.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <header>
+      <% if user_signed_in? %>
+        <!-- 管理者ユーザーなら表示 -->
+        <% if current_user.admin_flg? %>
+          <%= link_to "管理者", rails_admin_path %>
+        <% end %>
+        <%= link_to "Hospital", hospitals_path %>
+        <%= link_to "Users", users_path %>
+        <%= link_to "Mypage", user_path(current_user) %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Hospital", hospitals_path %>
+        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "新規登録", new_user_registration_path %>
+      <% end %>
+    </header>
+
+    <%= yield %>
+  </body>
+</html>

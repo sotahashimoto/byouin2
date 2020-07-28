@@ -1,0 +1,9 @@
+<h1>新規投稿</h1>
+<!-- form_for部分 -->
+<%= form_for(@hospital) do |h| %>
+  <h4>病院名</h4>
+  <%= h.text_field :title %>
+  <h4>診療科目</h4>
+  <%= h.text_area :body %>
+  <%= h.submit '投稿' %>
+<% end %>

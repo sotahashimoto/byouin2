@@ -1,0 +1,9 @@
+<h1>編集画面</h1>
+<%= form_for(@hospital) do |h| %>
+  <h4>病院名</h4>
+  <%= h.text_field :title %>
+  <h4>診療科目</h4>
+  <%= h.text_area :body %>
+  <%= h.attachment_field :hospital_image %>
+  <%= h.submit '保存' %>
+<% end %>
