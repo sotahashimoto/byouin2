@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'hospitals#index'
   resources :hospitals do
     resources :comments, only: [:create, :destroy]
-    resource :favorites
+    resource :favorites, only: [:create, :destroy]
   end
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :update]
 end
