@@ -5,6 +5,20 @@
   <%= h.submit "検索" %>
 <% end %>
 
+<%= search_form_for @search do |h| %>
+  <!-- _cont部分一致, _eq等しい, _not_eq等しくない -->
+  <%= h.label :title_cont, "病院名" %>
+  <%= h.search_field :title_cont %>
+  <%= h.submit "検索" %>
+<% end %>
+
+<%= search_form_for @search do |h| %>
+  <!-- _cont部分一致, _eq等しい, _not_eq等しくない -->
+  <%= h.label :title_cont, "病院名" %>
+  <%= h.search_field :title_cont %>
+  <%= h.submit "検索" %>
+<% end %>
+
 <table class="hospitar_index_table">
   <tr>
     <th>画像</th>
