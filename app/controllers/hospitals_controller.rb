@@ -8,11 +8,6 @@ class HospitalsController < ApplicationController
     @results = @search.result.page(params[:page]).reverse_order
   end
 
-  def search
-    @q = Hospital.search(search_params)
-    @students = @q.result(distinct: true)
-  end
-
   def show
     @hospital = Hospital.find(params[:id])
     @comments = @hospital.comments
