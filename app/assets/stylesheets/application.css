@@ -34,7 +34,7 @@ ul {
 footer {
 	background-color: skyblue;
 }
-
+/*tableタグ*/
 .hospitar_index_table tr:hover td {
   background-color: #d4faff;
 }
