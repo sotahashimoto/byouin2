@@ -21,15 +21,53 @@
 }
 
 header {
+  height: 100px;
   display: flex;
   align-items: center;
-  background-color: skyblue
+}
+.logo {
+  margin: 0 100px;
 }
 
 ul {
   display: flex;
   list-style: none;
 }
+
+header nav {
+  margin-left: auto;
+}
+
+header nav ul li {
+  margin: 30px;
+}
+
+/*navの下線設定ここかから*/
+.hover_nav {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+}
+.hover_nav::after {
+  position: absolute;
+  content: '';
+  top: 60px;
+  left: 0;
+  width: 0;
+  height: 5px;
+  background: #2196F3;
+  transition: all 0.3s ease 0s;
+}
+.hover_nav:hover {
+  cursor: pointer;
+}
+.hover_nav:hover::after {
+  width: 100%;
+}
+/*navの下線設定ここかまで*/
+
+a:visited { color:#808080; text-decoration:none }
 
 footer {
 	background-color: skyblue;
