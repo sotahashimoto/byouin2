@@ -11,8 +11,9 @@
     <th>病院名</th>
     <th>診療科目</th>
     <th>特徴、強み</th>
-    <th></th>
+    <th>住所</th>
     <th>いいねの数</th>
+    <th></th>
   </tr>
 
   <% if @results.any? %>
@@ -22,6 +23,7 @@
         <td><%= link_to result.title, hospital_path(result) %></td>
         <td><%= result.department %></td>
         <td><%= result.body %></td>
+        <td><%= result.street %></td>
           <!-- いいね機能↓ -->
           <!-- ユーザーがログイン済かを判定 && ログインユーザーがいいねをしていたらif -->
           <% if user_signed_in? && current_user.already_favorited?(result) %>
