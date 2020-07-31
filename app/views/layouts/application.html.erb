@@ -15,22 +15,23 @@
       <%= image_tag 'logo.png', :size =>'120x70', class: "logo"%>
       <nav>
         <ul>
-      <% if user_signed_in? %>
-        <!-- 管理者ユーザーなら表示 -->
-        <% if current_user.admin_flg? %>
+          <% if user_signed_in? %>
+            <!-- 管理者ユーザーなら表示 -->
+            <% if current_user.admin_flg? %>
               <li><%= link_to "管理者", rails_admin_path, class: "hover_nav" %></li>
             <% end %>
-            <li><%= link_to "Hospital", hospitals_path, class: "hover_nav" %></li>
-            <li><%= link_to "Users", users_path, class: "hover_nav" %></li>
-            <li><%= link_to "Mypage", user_path(current_user), class: "hover_nav" %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, class: "hover_nav", method: :delete %></li>
+              <li><%= link_to "Hospital", hospitals_path, class: "hover_nav" %></li>
+              <li><%= link_to "Users", users_path, class: "hover_nav" %></li>
+              <li><%= link_to "Mypage", user_path(current_user), class: "hover_nav" %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, class: "hover_nav", method: :delete %></li>
           <% else %>
-            <li><%= link_to "Hospital", hospitals_path, class: "hover_nav" %></li>
-            <li><%= link_to "ログイン", new_user_session_path, class: "hover_nav" %></li>
-            <li><%= link_to "新規登録", new_user_registration_path, class: "hover_nav" %></li>
+              <li><%= link_to "Hospital", hospitals_path, class: "hover_nav" %></li>
+              <li><%= link_to "ログイン", new_user_session_path, class: "hover_nav" %></li>
+              <li><%= link_to "新規登録", new_user_registration_path, class: "hover_nav" %></li>
+              <li><%= link_to "ゲスト", hospitals_guest_sign_in_path, class: "hover_nav", method: :post %></li>
           <% end %>
-    </ul>
-    </nav>
+        </ul>
+      </nav>
     </header>
 
     <%= yield %>

@@ -16,6 +16,16 @@ class UsersController < ApplicationController
   	redirect_to users_path
   end
 
+  def new_guest
+    # ゲストユーザーがなければ作成する
+    user = User.find_or_create_by(email: 'guest@example.com') do |user|
+      # ランダムパスワード作成
+      user.password = SecureRandom.urlsafe_base64
+    end
+    sign_in  user
+    redirect_to root_path, notice: "ゲストユーザーでログインしました。"
+  end
+
   private
   def user_params
   	params.require(:user).permit(:user_image)

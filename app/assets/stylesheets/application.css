@@ -37,12 +37,19 @@ ul {
 header nav {
   margin-left: auto;
 }
-
+/*link_toの色*/
+header nav a:visited {
+  color:#808080; text-decoration:none;
+}
 header nav ul li {
   margin: 30px;
 }
 
-/*navの下線設定ここかから*/
+footer {
+  background-color: skyblue;
+}
+
+/*--------------------nav下線設定--------------------*/
 .hover_nav {
   display: inline-block;
   position: relative;
@@ -65,14 +72,28 @@ header nav ul li {
 .hover_nav:hover::after {
   width: 100%;
 }
-/*navの下線設定ここかまで*/
 
-a:visited { color:#808080; text-decoration:none }
-
-footer {
-	background-color: skyblue;
+/*--------------------スライドショー--------------------*/
+.image1 {
+  background-image: url(image1.jpg);
 }
-/*tableタグ*/
+.image2 {
+  background-image: url(image2.jpg);
+}
+.image3 {
+  background-image: url(image3.jpg);
+}
+.image4 {
+  background-image: url(image4.jpg);
+}
+.image5 {
+  background-image: url(image5.jpg);
+}
+#container{
+  height: 450px;
+}
+
+/*--------------------tableタグ--------------------*/
 .hospitar_index_table tr:hover td {
   background-color: #d4faff;
 }

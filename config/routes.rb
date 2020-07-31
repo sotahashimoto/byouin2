@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show, :update]
+
+  post 'hospitals/guest_sign_in', to: 'users#new_guest'
 end

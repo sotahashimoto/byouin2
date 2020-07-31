@@ -1,7 +1,31 @@
+<div id="container">
+  <div id="theTarget">
+    <div class="image1"></div>
+    <div class="image2"></div>
+    <div class="image3"></div>
+    <div class="image4"></div>
+    <div class="image5"></div>
+  </div>
+</div>
+
 <%= search_form_for @search do |h| %>
   <!-- _cont部分一致, _eq等しい, _not_eq等しくない -->
   <%= h.label :title_cont, "病院名" %>
   <%= h.search_field :title_cont %>
+  <%= h.submit "検索" %>
+<% end %>
+
+<%= search_form_for @search do |h| %>
+  <!-- _cont部分一致, _eq等しい, _not_eq等しくない -->
+  <%= h.label :title_cont, "診療科目" %>
+  <%= h.search_field :department_cont %>
+  <%= h.submit "検索" %>
+<% end %>
+
+<%= search_form_for @search do |h| %>
+  <!-- _cont部分一致, _eq等しい, _not_eq等しくない -->
+  <%= h.label :title_cont, "住所" %>
+  <%= h.search_field :street_cont %>
   <%= h.submit "検索" %>
 <% end %>
 
@@ -12,7 +36,7 @@
     <th>診療科目</th>
     <th>特徴、強み</th>
     <th>住所</th>
-    <th></th>
+    <% if user_signed_in? %><th></th><% end %>
     <th>いいねの数</th>
   </tr>
 
